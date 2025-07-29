@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
+using Newtonsoft.Json;
+using Java.Nio.FileNio;
 
 namespace MauiGameLibrary.Services
 {
@@ -17,7 +19,8 @@ namespace MauiGameLibrary.Services
 
         public GameDataService()
         {
-            CreateFakeGameInformation();
+            // CreateFakeGameInformation();
+            LoadData();
             PrePopulateData();
         }
 
@@ -153,6 +156,7 @@ namespace MauiGameLibrary.Services
                 _gameInformation.Add(gameInformation);
             }
 
+            SaveData();
         }
 
         public GameInformation GetGameInformationById(string id)
@@ -183,6 +187,32 @@ namespace MauiGameLibrary.Services
             return _genres;
         }
 
+        private string GetStoragePath()
+        {
+          string folderPath = System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData),
+              "gamedata.json");
+
+            return folderPath;
+        }
+
+
+        public void SaveData()
+        {
+           string jsonResult = JsonConvert.SerializeObject(_gameInformation);
+           string path = GetStoragePath();
+
+           File.WriteAllText(path, jsonResult);
+
+        }
+
+        public void LoadData()
+        {
+            string path = GetStoragePath();
+            string jsonResult = File.ReadAllText(path);
+            _gameInformation = JsonConvert.DeserializeObject<List<GameInformation>>(jsonResult);
+        
+        
+        }
 
     }
 }

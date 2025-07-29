@@ -118,6 +118,7 @@ namespace MauiGameLibrary.ViewModels
         public ICommand SaveChangesCommand { get; }
         public ICommand SelectImageCommand { get; }
 
+       
         public UpdateGameViewModel(GameDataService gameDataServices)
         {
             _gameDataServices = gameDataServices;

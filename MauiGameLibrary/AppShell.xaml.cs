@@ -14,5 +14,7 @@ namespace MauiGameLibrary
         {
            Routing.RegisterRoute("updategameroute", typeof(Views.UpdateGameView));
         }
+
+     
     }
 }
