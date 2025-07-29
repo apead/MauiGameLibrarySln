@@ -9,9 +9,6 @@
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add Game" Command="{Binding AddGameCommand}">
-            <ToolbarItem.IconImageSource>
-                <FontImageSource FontFamily="SegoeMDL2Assets" Glyph="&#xE109;" Color="White"/>
-            </ToolbarItem.IconImageSource>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
 

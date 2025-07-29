@@ -78,19 +78,6 @@
                 </Grid>
             </Border>
 
-            <!-- Image URL Entry -->
-            <Label Grid.Row="1" Grid.Column="0" Text="Image URL:*" VerticalOptions="Center"/>
-            <Entry Grid.Row="1" Grid.Column="1" Text="{Binding SelectedGame.Image}" Placeholder="Enter image URL">
-                <Entry.Behaviors>
-                    <toolkit:CharactersValidationBehavior 
-                    InvalidStyle="{StaticResource InvalidEntryStyle}"
-                    ValidStyle="{StaticResource ValidEntryStyle}"
-                    Flags="ValidateOnValueChanged"
-                    MinimumLength="1"
-                    CharacterType="Any"/>
-                </Entry.Behaviors>
-            </Entry>
-
             <!-- Title -->
             <Label Grid.Row="2" Grid.Column="0" Text="Title:*" VerticalOptions="Center"/>
             <Entry Grid.Row="2" Grid.Column="1" Text="{Binding SelectedGame.Title}" Placeholder="Enter game title">
