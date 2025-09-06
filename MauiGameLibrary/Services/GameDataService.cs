@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
 using Newtonsoft.Json;
-using Java.Nio.FileNio;
 
 namespace MauiGameLibrary.Services
 {
@@ -19,7 +18,7 @@ namespace MauiGameLibrary.Services
 
         public GameDataService()
         {
-            // CreateFakeGameInformation();
+            CreateFakeGameInformation();
             LoadData();
             PrePopulateData();
         }
@@ -208,9 +207,12 @@ namespace MauiGameLibrary.Services
         public void LoadData()
         {
             string path = GetStoragePath();
-            string jsonResult = File.ReadAllText(path);
-            _gameInformation = JsonConvert.DeserializeObject<List<GameInformation>>(jsonResult);
-        
+
+            if (File.Exists(path))
+            {
+                string jsonResult = File.ReadAllText(path);
+                _gameInformation = JsonConvert.DeserializeObject<List<GameInformation>>(jsonResult);
+            }        
         
         }
 
